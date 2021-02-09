@@ -82,8 +82,6 @@ async function stripePayment(req, res) {
 
 }
 
-
-
 module.exports = {
   stripePayment
 }
