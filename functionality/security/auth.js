@@ -1,11 +1,11 @@
 const axios = require('axios');
 
-async function Authorization(req)
+async function authorization(req)
 {
 const authHeader = req.headers['authorization'];
 const bearerToken = authHeader.split(' ');
 const token = bearerToken[1];
-const url = "http://localhost:3000/api/verification"
+const url = "https://b4sbi04kmi.execute-api.us-east-1.amazonaws.com/dev/api/verification"
 
 const response = await axios({
   url:url,
@@ -21,5 +21,5 @@ return response
 
 
 module.exports = {
-    Authorization
+    authorization
 }

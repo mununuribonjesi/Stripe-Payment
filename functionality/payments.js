@@ -12,15 +12,13 @@ async function stripePayment(req, res) {
   const authHeader = req.headers['authorization'];
   const bearerToken = authHeader.split(' ');
   const authtoken = bearerToken[1];
-  const url = "http://localhost:5000/api/findappointments";
-
-  console.log('im in')
+  const url = "https://bgoc6hbgdk.execute-api.us-east-1.amazonaws.com/dev/api/findappointments";
 
   var exists;
 
   await axios({
     method: 'get',
-    url: 'http://localhost:5000/api/findappointments',
+    url: 'https://bgoc6hbgdk.execute-api.us-east-1.amazonaws.com/dev/api/findappointments',
     params: {
       'name': name,
       'startTime': startTime,
@@ -51,7 +49,7 @@ async function stripePayment(req, res) {
       description: skill,
     }).then(async function () {
       await axios({
-        url: "http://localhost:5000/api/appointment",
+        url: "https://bgoc6hbgdk.execute-api.us-east-1.amazonaws.com/dev/api/appointment",
         method: 'Post',
         data: {
           'name': name,

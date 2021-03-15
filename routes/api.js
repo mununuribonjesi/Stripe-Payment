@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const functions = require('../functionality/payments');
-const security = require('../functionality/security/Authorization');
+const security = require('../functionality/security/auth');
 
 router.post('/payment', async function (req, res, next) {
 
     if(!req.headers['authorization']) return res.sendStatus(403);
   
-    const Auth = await security.Authorization(req);
+    const auth = await security.authorization(req);
 
-    if(Auth.status==200)
+    if(auth.status==200)
     {
       functions.stripePayment(req,res)
     }

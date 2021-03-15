@@ -1,5 +1,6 @@
 "use strict";
 
+const serverless = require('serverless-http');
 var express = require('express');
 var app = express();
 const api = require('./routes/api');
@@ -10,7 +11,6 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use('/api',api);
 
-const port = process.env.Port || 6000;
+module.exports.handler = serverless(app)
 
-app.listen(port);
 
