@@ -4,8 +4,6 @@ const functions = require('../functionality/payments');
 const security = require('../functionality/security/auth');
 
 router.post('/payment', async function (req, res, next) {
-
-    if(!req.headers['authorization']) return res.sendStatus(403);
   
     const auth = await security.authorization(req);
 
